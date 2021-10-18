@@ -1,6 +1,6 @@
 import React from "react";
 import { Component } from 'react';
-import { Text, View, Dimensions , ActivityIndicator, ScrollView, TouchableOpacity, Image} from "react-native";
+import { Text, View, Dimensions , ActivityIndicator, ScrollView, TouchableOpacity, Image, ScrollViewBase} from "react-native";
 import configre from "../config/configre";
 import Categories from "./Categories";
 import TrendingNews from "./TrendingNews";
@@ -15,6 +15,7 @@ class HomeScreen extends Component {
   componentDidMount() {
     fetch(
       `https://newsapi.org/v2/top-headlines?country=in&apiKey=${configre.API_KEY}`,
+      
     )
       .then(res => res.json())
       .then(response => {
@@ -29,10 +30,10 @@ class HomeScreen extends Component {
 
   render() {
     return (
-      <View style={{flex:10}}>
-        <Categories navigation={this.props.navigation} style={{flex:1}}/>
-         <TrendingNews navigation={this.props.navigation} style={{flex:2}} /> 
-        <View style={{alignItems: 'center', flex:9}}>
+      <View style={{flex:5, backgroundColor:'#F5F5F5'}}>
+        <Categories navigation={this.props.navigation} style={{flex:3}}/>
+         {/* <TrendingNews navigation={this.props.navigation} style={{flex:2}} />  */}
+        {/* <View style={{alignItems: 'center', flex:2}}>
           {this.state.news.length === 0 ? (
             <View
             style={{
@@ -43,7 +44,7 @@ class HomeScreen extends Component {
             <ActivityIndicator color="black" size="large" />
           </View>
           ) : (
-            <ScrollView showsVerticalScrollIndicator={false}>
+            <ScrollView showsVerticalScrollIndicator={true}>
               {this.state.news.map((news, index) =>
                 news.urlToImage ? (
                   <TouchableOpacity
@@ -60,8 +61,8 @@ class HomeScreen extends Component {
                         backgroundColor: 'white',
                         borderRadius: 10,
                         elevation: 4,
-                        width: deviceWidth - 30,
-                        marginVertical: 7,
+                        
+                        marginVertical: 2,
                       }}>
                       <Image
                         source={{uri: `${news.urlToImage}`}}
@@ -81,7 +82,7 @@ class HomeScreen extends Component {
               )}
             </ScrollView>
           )}
-        </View> 
+        </View>  */}
       </View>
     );
   }

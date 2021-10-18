@@ -1,5 +1,4 @@
-  
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import {
   ActivityIndicator,
   ScrollView,
@@ -9,7 +8,7 @@ import {
   Dimensions,
   TouchableOpacity,
 } from 'react-native';
-//import config from '../../android/config/config';
+//import Carousel from 'react-native-snap-carousel';
 import configre from '../config/configre';
 
 const deviceHeight = Dimensions.get('window').height;
@@ -27,12 +26,15 @@ class GetNews extends Component {
 
     fetch(
       `https://newsapi.org/v2/top-headlines?category=${this.props.route.params.category}&country=in&apiKey=${configre.API_KEY}`,
+      
     )
       .then(res => res.json())
       .then(response => {
         this.setState({
+
           news: response.articles,
         });
+        console.log(response);
       })
       .catch(error => {
         console.log(error);
@@ -41,12 +43,11 @@ class GetNews extends Component {
 
   render() {
     return (
-      <View style={{alignItems: 'center'}}>
+      <View style={{ alignItems: 'center',}}>
         {this.state.news.length === 0 ? (
           <ActivityIndicator
             style={{
-              height: deviceHeight,
-              width: deviceWidth,
+
               alignItems: 'center',
               justifyContent: 'center',
             }}
@@ -54,40 +55,81 @@ class GetNews extends Component {
             color="black"
           />
         ) : (
-          <ScrollView showsVerticalScrollIndicator={false}>
+          <ScrollView
+            style={{
+              display: 'flex',
+            }}>
             {this.state.news.map((news, index) =>
               news.urlToImage ? (
-                <TouchableOpacity
-                  key={index}
-                  onPress={() =>
-                    this.props.navigation.navigate('WebView', {
-                      url: news.url,
-                    })
-                  }>
-                  <View
+
+
+                <View
+                  style={{
+                    alignItems: 'center',
+                    display: 'flex',
+                    flexDirection: 'column',
+backgroundColor:'#e6e6fa',
+                    borderRadius: 20,
+                    shadowColor:'#191970',
+                    elevation:3,
+                    width: 400,
+                    borderWidth: 2,
+                    borderColor: '#b0c4de',
+                    height: deviceHeight / 2.4,
+                    marginVertical: 7,
+                    
+
+                  }}>
+                  <Image
+                    source={{ uri: `${news.urlToImage}` }}
+                    style={{ height: deviceHeight / 5, width: 395, borderRadius: 20 }}
+                  />
+                  <Text
                     style={{
-                      display: 'flex',
-                      flexDirection: 'row',
-                      backgroundColor: 'white',
-                      borderRadius: 10,
-                      elevation: 4,
-                      width: deviceWidth - 30,
-                      marginVertical: 7,
+                      fontSize: 17,
+                      height: 65,
+                      width: 395,
+                      height: 50,
+                      borderWidth: 0,
+                      borderColor: 'black',
+                      paddingLeft: 10,
+                      paddingTop: 5,
+                      fontWeight: 'bold',
+                      color: '#000080'
+
                     }}>
-                    <Image
-                      source={{uri: `${news.urlToImage}`}}
-                      style={{height: 100, width: 100, borderRadius: 10}}
-                    />
-                    <Text
-                      style={{
-                        width: deviceWidth - 130,
-                        paddingLeft: 10,
-                        paddingTop: 5,
-                      }}>
-                      {news.title}
-                    </Text>
-                  </View>
-                </TouchableOpacity>
+                    {news.title}
+                  </Text>
+                  <Text
+                    style={{
+                      fontSize: 15,
+                      width: 395,
+                      borderWidth: 0,
+                      borderColor: 'black',
+                      height: deviceHeight / 8,
+                      paddingLeft: 10,
+
+                    }}>
+                    {news.description}
+                    <TouchableOpacity 
+                      key={index}
+                      onPress={() =>
+                        this.props.navigation.navigate('WebView', {
+                          url: news.url,
+                        })
+                      }>
+                      <Text style={{
+                        fontSize: 16,
+                        top: 4,
+                        fontWeight: 'bold',
+                        paddingLeft: 5,
+                        color: 'red',
+                      }} >Read More ... </Text>
+                    </TouchableOpacity>
+                  </Text>
+
+                </View>
+
               ) : null,
             )}
           </ScrollView>
