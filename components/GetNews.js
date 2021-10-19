@@ -10,7 +10,7 @@ import {
 } from 'react-native';
 //import Carousel from 'react-native-snap-carousel';
 import configre from '../config/configre';
-
+//import LinearGradient from 'react-native-linear-gradient';
 const deviceHeight = Dimensions.get('window').height;
 const deviceWidth = Dimensions.get('window').width;
 
@@ -44,6 +44,7 @@ class GetNews extends Component {
   render() {
     return (
       <View style={{ alignItems: 'center',}}>
+        {/* <LinearGradient colors={['#50884A','#F7EDED']} style={styles1.linearGradient}/> */}
         {this.state.news.length === 0 ? (
           <ActivityIndicator
             style={{
@@ -134,6 +135,7 @@ backgroundColor:'#e6e6fa',
             )}
           </ScrollView>
         )}
+
       </View>
     );
   }

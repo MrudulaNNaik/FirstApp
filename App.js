@@ -14,6 +14,7 @@ import Weather from './components/WeatherScreen';
 import Splashscreen from './components/SplashScreen';
 import Login from './components/OtpLogin';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import GetOtp from './components/GetOtp';
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -187,9 +188,9 @@ const Tabs = () => {
 function App() {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName='Login' screenOptions={{headerShown: false }}>
+      <Stack.Navigator initialRouteName='GetOtp' screenOptions={{headerShown: false }}>
          <Stack.Screen name='OtpLogin' component={Login} /> 
-        <Stack.Screen name='Login' component={LoginScreen}   /> 
+        <Stack.Screen name='GetOtp' component={GetOtp}   /> 
         <Stack.Screen name="Icons" component={Tabs} />
         <Stack.Screen name="News" component={HomeScreen} />
         <Stack.Screen name='QR' component={Scanner} /> 

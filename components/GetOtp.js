@@ -39,8 +39,8 @@ class GetOtp extends  React.Component{
             })
 
             .catch(error => console.log("Error from fetch : " + error))
-
-             this.props.navigation.navigate('Login') 
+            this.props.navigation.navigate('OtpLogin')
+             //this.props.navigation.navigate('Login') 
             // this.props.navigation.navigate('HomeStack',{screen:'Home'}) 
    
     }
@@ -59,7 +59,7 @@ class GetOtp extends  React.Component{
          </TouchableOpacity>
                 </View>
                 <View  style={{justifyContent:'center', alignItems:'center',marginTop:'20%'}}> 
-                <Image style={{height:100 , width:100}} source={require('../Images/logo_s.jpg')} />
+                <Image style={{height:100 , width:100}} source={require('..//assets/logo_s.jpg')} />
                 <Text style={{ fontSize:24, marginTop:'5%',color:'#7C35D4', fontWeight:'bold'}}>DXC Technology</Text>
                 </View>
 
@@ -71,7 +71,7 @@ class GetOtp extends  React.Component{
                 <View style={{width:'100%'}}>
                 <TouchableOpacity style={{justifyContent:'center', alignItems:'center',backgroundColor:'#353FD4',borderRadius:40}} onPress={()=>{this.getOTP()}}>
                     <Text style={styles.button}>
-                        Get Otp
+                        Get OTP
                     </Text>
                     </TouchableOpacity> 
                     </View>
