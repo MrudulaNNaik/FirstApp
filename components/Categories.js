@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { ScrollView, Text, TouchableOpacity, View, Image, StyleSheet, Dimensions } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
+import { NeomorphBlur } from 'react-native-neomorph-shadows';
 const categories = ['Entertainment'];
 const business = ['Business'];
 const politics = ['Politics'];
@@ -18,7 +19,7 @@ class Categories extends Component {
       
       <View style={{  flexDirection: 'column',  elevation:2, backgroundColor:'white' }}>
 <View>
-        <LinearGradient colors={['#ff99cc', '#ffff99']} style={styles2.linearGradient}/>
+        <LinearGradient start={{x: 0, y: 0.60}} end={{x: 1, y: 0.25}} colors={['#ffccff','#ffff99','#ffccff', ]} style={styles2.linearGradient}/>
       </View>
         
           {categories.map((category, index) => (
@@ -31,12 +32,16 @@ class Categories extends Component {
                 })
               }>
               <View >
+              <NeomorphBlur
+            darkShadowColor="#FF3333"
+  style={styles2.Icon_Style}
+/>
                 <Image
-                  style={{height:68,width:70,top:5, left:4}} resizeMode='contain' source={require('../assets/entertainment1.png')}>
+                  style={{height:75,width:75, bottom:75, left:4, borderRadius:20}} resizeMode='contain' source={require('../assets/entertainment_png.png')}>
                 </Image>
                 <Text
                   style={{
-                    top:8,
+                    bottom:69,
                     fontWeight:'bold',
                     fontSize:12,
                     color:'#000080'
@@ -57,16 +62,20 @@ class Categories extends Component {
                 })
               }>
               <View>
+              <NeomorphBlur
+            darkShadowColor="#000066" 
+  style={styles2.Icon_Style}
+/>
                 <Image
-                  style={{height:70,width:70,top:5, left:4}} resizeMode='contain' source={require('../assets/b1.png')}>
+                  style={{height:70,width:70, bottom:75, left:4, borderRadius:10}} resizeMode='contain' source={require('../assets/b1.png')}>
                 </Image>
                 <Text
                   style={{
+                    bottom:65,
                     fontWeight:'bold',
-                    top:8,
-                    left:18,
-                    fontSize: 12,
-                    color:'#000080'
+                    fontSize:12,
+                    color:'#000080',
+                    left:14
                   }}>
                   {category}
                 </Text>
@@ -84,16 +93,21 @@ class Categories extends Component {
                 })
               }>
               <View>
+              <NeomorphBlur
+            darkShadowColor="#000066" // <- set this
+           
+  style={styles2.Icon_Style}
+/>
                 <Image
-                  style={{height:65,width:69, top:5, left:4}}  source={require('../assets/doc.png')}>
+                  style={{height:68,width:68, bottom:75, left:4, borderRadius:20}}  source={require('../assets/doc.png')}>
                 </Image>
                 <Text
                   style={{
+                    bottom:60,
                     fontWeight:'bold',
-                    top:13,
-                    left:20,
-                    fontSize: 12,
-                    color:'#000080'
+                    fontSize:12,
+                    color:'#000080',
+                    left:20
                   }}>
                   {category}
                 </Text>
@@ -104,7 +118,7 @@ class Categories extends Component {
        
           {tech.map((category, index) => (
             <TouchableOpacity style={{margin:10, width:80,flexDirection:'column',height:80,backgroundColor:'white', shadowColor:'blue',  elevation:10, borderWidth:1, borderColor:'lightblue',
-            bottom:870, left:40, borderRadius:20 }}
+            bottom:855, left:40, borderRadius:20 }}
               key={index}
               onPress={() =>
                 this.props.navigation.navigate('GetNews', {
@@ -112,15 +126,21 @@ class Categories extends Component {
                 })
               }>
               <View>
+              <NeomorphBlur
+            darkShadowColor="#000066" // <- set this
+           
+  style={styles2.Icon_Style}
+/>
                 <Image
-                  style={{height:75,width:74,bottom:1, left:2}} resizeMode='contain' source={require('../assets/tech.png')}>
+                  style={{height:78,width:75, bottom:80, left:1, borderRadius:20, borderColor:'black', borderWidth:0}} resizeMode='contain' source={require('../assets/tech.png')}>
                 </Image>
                 <Text
                   style={{
+                    bottom:68,
                     fontWeight:'bold',
-                    top:8,
-                    fontSize: 12,
-                    color:'#000080'
+                    fontSize:12,
+                    color:'#000080',
+                    left:10
                   }}>
                   {category}
                 </Text>
@@ -130,7 +150,7 @@ class Categories extends Component {
 
           {sport.map((category, index) => (
             <TouchableOpacity style={{margin:10,width:80,flexDirection:'column',height:80,backgroundColor:'white', shadowColor:'blue',  elevation:10, borderWidth:1, borderColor:'lightblue',
-            bottom:970, left:150, borderRadius:20 }}
+            bottom:955, left:150, borderRadius:20 }}
               key={index}
               onPress={() =>
                 this.props.navigation.navigate('GetNews', {
@@ -138,16 +158,21 @@ class Categories extends Component {
                 })
               }>
               <View>
+              <NeomorphBlur
+            darkShadowColor="#000066" // <- set this
+            
+  style={styles2.Icon_Style}
+/>
                 <Image
-                  style={{height:80,width:73,bottom:1, left:2  }} resizeMode='contain' source={require('../assets/sports.png')}>
+                  style={{height:78,width:75, bottom:80, left:1,borderRadius:20,  }} resizeMode='contain' source={require('../assets/sports.png')}>
                 </Image>
                 <Text
                   style={{
+                    bottom:68,
                     fontWeight:'bold',
-                    top:5,
-                    left:13,
-                    fontSize: 12,
-                    color:'#000080'
+                    fontSize:12,
+                    color:'#000080',
+                    left:18
                   }}>
                   {category}
                 </Text>
@@ -163,7 +188,16 @@ class Categories extends Component {
   }
 }
 const styles2 = StyleSheet.create({
-  linearGradient: {height: deviceHeight,width: 411,}
+  linearGradient: {height: deviceHeight,width: 411,},
+  Icon_Style: {
+    shadowRadius: 5,
+    borderRadius: 20,
+    backgroundColor: 'white',
+    width: 80,
+    height: 80,
+  
+}
+
   
 });
 export default Categories;

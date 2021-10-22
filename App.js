@@ -15,6 +15,9 @@ import Splashscreen from './components/SplashScreen';
 import Login from './components/OtpLogin';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import GetOtp from './components/GetOtp';
+import Trials from './components/Trial';
+import myIcon from './components/Trial';
+
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -118,7 +121,7 @@ const Tabs = () => {
                               />
                           );
                           
-                          case "Weather":
+                          case "Try":
                             return (
                                 <Image
                                     source={require('./assets/weather.png')}
@@ -150,7 +153,7 @@ const Tabs = () => {
           <Tab.Screen
               name="News"
               component={HomeScreen}
-              
+              //options={{headerShown:false}}
           />
           
           
@@ -161,8 +164,8 @@ const Tabs = () => {
               options={{headerShown:false}}
           />
           <Tab.Screen
-              name="Weather"
-              component={Weather}
+              name="Try"
+              component={myIcon}
               options={{headerShown:false}}
           />
       </Tab.Navigator>
@@ -194,7 +197,7 @@ function App() {
         <Stack.Screen name="Icons" component={Tabs} />
         <Stack.Screen name="News" component={HomeScreen} />
         <Stack.Screen name='QR' component={Scanner} /> 
-        <Stack.Screen name='Weather' component={Weather} /> 
+        <Stack.Screen name='Weathe' component={Weather} /> 
         <Stack.Screen name='GetNews' component={GetNews}></Stack.Screen>
         <Stack.Screen name='DescNews' component={DescNews}></Stack.Screen>
         <Stack.Screen name='WebView' component={WebViewComponent} />
